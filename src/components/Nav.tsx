@@ -14,7 +14,7 @@ const Nav = () => {
         <a href="/">
           <img src={logo} alt="logo" width={116} height={35} className="" />
         </a>
-        <ul className="flex gap-12 font-openSans font-medium text-lg text-black max-xl:hidden">
+        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color max-xl:hidden">
           {navLinks.map((link) => (
             <li
               key={link.label}
