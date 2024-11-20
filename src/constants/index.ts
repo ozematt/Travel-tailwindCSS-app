@@ -14,22 +14,22 @@ export const navLinks = [
 
 export const category = [
   {
-    imgURL: { antene },
+    imgURL: antene,
     title: "Calculate Weather",
     text: "Built Wicket longer admire do barton vanity itself do in it.",
   },
   {
-    imgURL: { plane },
+    imgURL: plane,
     title: "Best Flights",
     text: "Engrossed listening. Park gate sell they west hard for the.",
   },
   {
-    imgURL: { mic },
+    imgURL: mic,
     title: "Local Events",
     text: "Barton vanity itself do in it. Prefer to men it engrossed listening. ",
   },
   {
-    imgURL: { gear },
+    imgURL: gear,
     title: "Customization",
     text: "We deliver outsourced aviation services for military customers",
   },
