@@ -9,16 +9,16 @@ const Nav = () => {
   console.log(openMenu);
 
   return (
-    <header className="px-[115px] max-sm:px-[30px] py-[35px] w-full">
+    <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
       <nav className="flex justify-between items-center relative">
         <a href="/">
           <img src={logo} alt="logo" width={116} height={35} className="" />
         </a>
-        <ul className="flex gap-12  font-openSans font-medium text-lg text-black max-xl:hidden">
+        <ul className="flex gap-12 font-openSans font-medium text-lg text-black max-xl:hidden">
           {navLinks.map((link) => (
             <li
               key={link.label}
-              className="rounded-md px-5 py-3 hover:shadow-morph"
+              className="rounded-md px-5 py-3 hover:shadow-customMorph"
             >
               <a href={link.href}>{link.label}</a>
             </li>
@@ -34,7 +34,7 @@ const Nav = () => {
           />
         </div>
         {openMenu && (
-          <div className="absolute top-10 right-0 mt-3">
+          <div className="absolute top-10 right-0 mt-3 bg-white py-4 pr-5 z-20 rounded-xl">
             <ul className="space-y-4 w-[120px] text-right text-lg">
               {navLinks.map((link) => (
                 <li className="hover:font-semibold">
