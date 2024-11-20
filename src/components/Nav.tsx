@@ -1,0 +1,52 @@
+import { useState } from "react";
+import logo from "../assets/Logo.png";
+import hamburger from "../assets/hamburger.png";
+import close from "../assets/close.png";
+import { navLinks } from "../constants";
+
+const Nav = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+  console.log(openMenu);
+
+  return (
+    <header className="px-[115px] max-sm:px-[30px] py-[35px] w-full">
+      <nav className="flex justify-between items-center relative">
+        <a href="/">
+          <img src={logo} alt="logo" width={116} height={35} className="" />
+        </a>
+        <ul className="flex gap-12  font-openSans font-medium text-lg text-black max-xl:hidden">
+          {navLinks.map((link) => (
+            <li
+              key={link.label}
+              className="rounded-md px-5 py-3 hover:shadow-morph"
+            >
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+        <div className="hidden max-xl:block">
+          <img
+            src={openMenu ? close : hamburger}
+            alt="hamburger"
+            width={25}
+            height={25}
+            onClick={() => setOpenMenu(!openMenu)}
+          />
+        </div>
+        {openMenu && (
+          <div className="absolute top-10 right-0 mt-3">
+            <ul className="space-y-4 w-[120px] text-right text-lg">
+              {navLinks.map((link) => (
+                <li className="hover:font-semibold">
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+};
+
+export default Nav;
