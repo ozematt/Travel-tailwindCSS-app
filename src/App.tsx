@@ -10,7 +10,7 @@ import TopDestination from "./sections/TopDestination";
 
 const App = () => {
   return (
-    <main className="max-container">
+    <main className="max-container relative">
       <Nav />
       <Hero />
       <Services />
