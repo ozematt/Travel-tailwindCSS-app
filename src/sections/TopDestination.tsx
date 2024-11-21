@@ -1,6 +1,6 @@
 import { places } from "../constants";
-import navigation from "../assets/navigation.png";
 import decoration from "../assets/Decore2.png";
+import DestinationCard from "../components/DestinationCard";
 
 const TopDestination = () => {
   return (
@@ -16,30 +16,7 @@ const TopDestination = () => {
       </h2>
       <div className="flex flex-wrap justify-center items-center gap-10 mt-14 relative">
         {places.map((place) => (
-          <div className="shadow-lg rounded-b-2xl hover:scale-110 hover:shadow-2xl">
-            <div
-              key={place.place}
-              className="w-[314px] h-[327px] rounded-t-2xl overflow-hidden"
-            >
-              <img src={place.imgURL} alt={place.place} />
-            </div>
-            <div className="h-[130px] w-full bg-white bottom-0 rounded-b-2xl font-poppins font-medium text-lg text-text-color">
-              <div className="flex justify-between px-8 py-5">
-                <p>{place.place}</p>
-                <p>$ {place.price}k</p>
-              </div>
-              <div>
-                <p className="flex px-8">
-                  <img
-                    src={navigation}
-                    alt="navigation arrow"
-                    className="pr-2"
-                  />{" "}
-                  {place.days} Days Trip
-                </p>
-              </div>
-            </div>
-          </div>
+          <DestinationCard {...place} />
         ))}
         <img
           src={decoration}
