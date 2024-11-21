@@ -5,18 +5,18 @@ const Subscribe = () => {
   return (
     <section className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full">
       <div className="bg-[#DFD7F9] bg-opacity-30 max-w-[1170px] min-h-[410px] rounded-tl-[130px] rounded-2xl flex flex-col items-center relative">
-        <h3 className="font-poppins font-semibold text-primary text-opacity-80 text-[33px] leading-[60px] text-center max-w-[860px] py-[70px]">
+        <h3 className="px-[100px] font-poppins font-semibold text-primary text-opacity-80 text-[33px] max-md:text-[25px] leading-[60px] max-lg:leading-normal text-center py-[70px]">
           Subscribe to get information, latest news and other interesting offers
           about Jadoo
         </h3>
-        <div className="space-x-6">
+        <div className="max-lg:gap-3 max-lg:pb-8 w-full flex justify-center max-lg:flex-col max-lg:items-center p-8">
           {" "}
           <input
             type="email"
             placeholder="Your email"
-            className=" z-2 bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem] min-w-[412px] min-h-[70px] rounded-xl placeholder:pl-1"
+            className=" z-2 bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem] mx-[30px] w-full max-w-[400px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          <button className="px-[50px] py-[22px] rounded-xl hover:shadow-customMorph bg-gradient-to-b from-[#FF946D] to-[#FF7D68] text-white font-openSans text-lg">
+          <button className="max-lg:mx-[30px]  px-[50px] py-[22px] rounded-xl hover:shadow-customMorph bg-gradient-to-b from-[#FF946D] to-[#FF7D68] text-white font-openSans text-lg">
             Subscribe
           </button>
         </div>
