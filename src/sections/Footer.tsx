@@ -23,7 +23,7 @@ const Footer = () => {
               {section.items.map((item) => (
                 <p
                   key={item}
-                  className="font-poppins font-medium text-text-color text-[18px]  py-1"
+                  className="font-poppins font-medium text-text-color text-[18px] py-1 hover:text-opacity-40 cursor-pointer"
                 >
                   {item}
                 </p>
@@ -40,6 +40,7 @@ const Footer = () => {
                 alt={social.title}
                 width={60}
                 height={60}
+                className="cursor-pointer"
               />
             ))}
           </div>
@@ -47,8 +48,16 @@ const Footer = () => {
             Discover our app
           </p>
           <div className="flex gap-2">
-            <img src={googlePlay} alt="google play icon" />
-            <img src={appleStore} alt="apple store icon" />
+            <img
+              src={googlePlay}
+              alt="google play icon"
+              className="cursor-pointer"
+            />
+            <img
+              src={appleStore}
+              alt="apple store icon"
+              className="cursor-pointer"
+            />
           </div>
         </div>
       </div>
