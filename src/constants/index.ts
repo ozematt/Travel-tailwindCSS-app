@@ -20,6 +20,10 @@ import company3 from "../assets/company3.png";
 import company4 from "../assets/company4.png";
 import company5 from "../assets/company5.png";
 
+import social1 from "../assets/social1.png";
+import social2 from "../assets/social2.png";
+import social3 from "../assets/social3.png";
+
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about-us", label: "About Us" },
@@ -115,3 +119,33 @@ export const companies = [
   { name: "qantas", imgURL: company4 },
   { name: "alitalia", imgURL: company5 },
 ] as const;
+
+export const footerData = [
+  {
+    title: "Company",
+    items: ["About", "Careers", "Mobile"],
+  },
+  {
+    title: "Contact",
+    items: ["Help/FAQ", "Press", "Affilates"],
+  },
+  {
+    title: "More",
+    items: ["Airlinefees", "Airline", "Low fare tips"],
+  },
+];
+
+export const socialIcon = [
+  {
+    title: "facebook",
+    icon: social1,
+  },
+  {
+    title: "instagram",
+    icon: social2,
+  },
+  {
+    title: "twitter",
+    icon: social3,
+  },
+];
