@@ -2,7 +2,7 @@ import { companies } from "../constants";
 
 const Companies = () => {
   return (
-    <section className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full relative">
+    <section className="px-[34px] sm:px-[120px] max-lg:mt-[70px] lg:mt-[200px] w-full relative">
       <div className="flex flex-wrap items-center justify-evenly">
         {companies.map((company) => (
           <img
