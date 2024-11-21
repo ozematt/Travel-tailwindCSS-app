@@ -7,6 +7,10 @@ import image1 from "../assets/Image1.jpg";
 import image2 from "../assets/Image2.jpg";
 import image3 from "../assets/Image3.jpg";
 
+import icon1 from "../assets/Icon1.png";
+import icon2 from "../assets/Icon2.png";
+import icon3 from "../assets/Icon3.png";
+
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about-us", label: "About Us" },
@@ -57,5 +61,23 @@ export const places = [
     place: "Full Europe",
     price: "15",
     days: "28",
+  },
+] as const;
+
+export const steps = [
+  {
+    icon: icon1,
+    title: "Choose Destination",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
+  },
+  {
+    icon: icon2,
+    title: "Make Payment",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
+  },
+  {
+    icon: icon3,
+    title: "Reach Airport on Selected Date",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
   },
 ] as const;

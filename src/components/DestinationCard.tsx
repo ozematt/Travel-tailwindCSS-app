@@ -14,7 +14,7 @@ const DestinationCard = ({
   days,
 }: DestinationCardProps) => {
   return (
-    <div className="shadow-lg rounded-b-2xl hover:scale-110 hover:shadow-2xl">
+    <div className="shadow-lg rounded-b-2xl transition ease-in-out delay-155 hover:scale-110 max-sm:hover:scale-95 hover:shadow-2xl">
       <div
         key={place}
         className="w-[314px] h-[327px] rounded-t-2xl overflow-hidden"

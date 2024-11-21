@@ -6,7 +6,6 @@ import { navLinks } from "../constants";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  console.log(openMenu);
 
   return (
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
