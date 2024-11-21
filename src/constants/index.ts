@@ -11,6 +11,9 @@ import icon1 from "../assets/Icon1.png";
 import icon2 from "../assets/Icon2.png";
 import icon3 from "../assets/Icon3.png";
 
+import avatar1 from "../assets/avatar1.png";
+import avatar2 from "../assets/avatar2.png";
+
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about-us", label: "About Us" },
@@ -81,3 +84,20 @@ export const steps = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
   },
 ] as const;
+
+export const testimonials = [
+  {
+    name: "Mike Taylor",
+    from: "Lahore, Pakistan",
+    avatar: avatar2,
+    comment:
+      "Friendly staff, seamless booking, and incredible destinations. Every detail was handled perfectly. Highly recommend!",
+  },
+  {
+    name: "Laura Jason",
+    from: "London, UK",
+    avatar: avatar1,
+    comment:
+      "I had an amazing experience with this travel agency! Every detail was handled perfectly. Highly recommend for stress-free travel!",
+  },
+];

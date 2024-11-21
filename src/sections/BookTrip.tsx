@@ -29,7 +29,7 @@ const BookTrip = () => {
       <img
         src={tripCart}
         alt="trip cart"
-        className="absolute max-xl:mt-[90px] max-xl:left-10 max-sm:left-0 xl:right-5 xl:top-5"
+        className="absolute max-sm:hidden max-xl:mt-[90px] max-xl:left-10 max-sm:left-0 xl:right-5 xl:top-5"
       />
     </section>
   );
