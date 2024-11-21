@@ -14,6 +14,12 @@ import icon3 from "../assets/Icon3.png";
 import avatar1 from "../assets/avatar1.png";
 import avatar2 from "../assets/avatar2.png";
 
+import company1 from "../assets/company1.png";
+import company2 from "../assets/company2.png";
+import company3 from "../assets/company3.png";
+import company4 from "../assets/company4.png";
+import company5 from "../assets/company5.png";
+
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about-us", label: "About Us" },
@@ -100,4 +106,12 @@ export const testimonials = [
     comment:
       "I had an amazing experience with this travel agency! Every detail was handled perfectly. Highly recommend for stress-free travel!",
   },
-];
+] as const;
+
+export const companies = [
+  { name: "axon", imgURL: company1 },
+  { name: "jetstar", imgURL: company2 },
+  { name: "expedia", imgURL: company3 },
+  { name: "qantas", imgURL: company4 },
+  { name: "alitalia", imgURL: company5 },
+] as const;

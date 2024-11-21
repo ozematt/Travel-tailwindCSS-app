@@ -1,3 +1,4 @@
+import CommentCart from "../components/CommentCart";
 import { testimonials } from "../constants";
 
 const Comments = () => {
@@ -11,27 +12,7 @@ const Comments = () => {
       </h2>
       <div className="mt-[80px] flex flex-wrap justify-center gap-[80px]">
         {testimonials.map((comment) => (
-          <div className="relative transition ease-in-out delay-155 hover:scale-110 max-sm:hover:scale-95 hover:shadow-2xl">
-            <img
-              src={comment.avatar}
-              alt="avatar"
-              width={70}
-              height={70}
-              className="rounded-full absolute top-[-40px] left-[-30px]"
-            />
-            <div className="max-w-[505px] min-h-[224px] shadow-lg rounded-xl ">
-              <p className="p-7 font-poppins text-text-color leading-[27px] max-w-[90%]">
-                {" "}
-                "{comment.comment}"
-              </p>
-              <p className="pl-7 font-poppins font-semibold text-text-color text-lg">
-                {comment.name}
-              </p>
-              <p className="pl-7 font-poppins text-text-color pb-6">
-                {comment.from}
-              </p>
-            </div>
-          </div>
+          <CommentCart key={comment.name} {...comment} />
         ))}
       </div>
     </section>

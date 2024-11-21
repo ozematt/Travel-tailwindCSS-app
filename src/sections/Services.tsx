@@ -14,8 +14,8 @@ const Services = () => {
         We offer best Services
       </h2>
       <div className="flex flex-wrap justify-center items-center gap-8 mt-14">
-        {category.map((item, index) => (
-          <CategoryCart index={index} {...item} />
+        {category.map((item) => (
+          <CategoryCart key={item.title} {...item} />
         ))}
       </div>
     </section>

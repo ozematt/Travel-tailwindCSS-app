@@ -16,7 +16,7 @@ const TopDestination = () => {
       </h2>
       <div className="flex flex-wrap justify-center items-center gap-[70px] mt-14 relative">
         {places.map((place) => (
-          <DestinationCard {...place} />
+          <DestinationCard key={place.place} {...place} />
         ))}
         <img
           src={decoration}

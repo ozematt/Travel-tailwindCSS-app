@@ -2,15 +2,11 @@ type CategoryCartProps = {
   imgURL: string;
   title: string;
   text: string;
-  index: number;
 };
 
-const CategoryCart = ({ imgURL, title, text, index }: CategoryCartProps) => {
+const CategoryCart = ({ imgURL, title, text }: CategoryCartProps) => {
   return (
-    <div
-      key={index}
-      className="w-[267px] h-[314px] hover:shadow-customMorph rounded-[40px] flex flex-col  items-center"
-    >
+    <div className="w-[267px] h-[314px] hover:shadow-customMorph rounded-[40px] flex flex-col  items-center">
       <div className="mt-9">
         <img src={imgURL} alt="icon" />
       </div>
