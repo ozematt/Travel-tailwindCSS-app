@@ -23,6 +23,9 @@ export default {
         customRed:
           "10px 10px 10px rgba(223, 105, 81, 0.4), -10px -10px 10px white",
       },
+      backgroundImage: {
+        "email-icon": "url('/src/assets/email_Icon.png')",
+      },
     },
   },
   plugins: [],
