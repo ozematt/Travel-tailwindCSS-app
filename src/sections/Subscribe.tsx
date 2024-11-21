@@ -3,7 +3,10 @@ import violetIcon from "../assets/violet_Icon.png";
 
 const Subscribe = () => {
   return (
-    <section className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full">
+    <section
+      id="contact-us"
+      className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full"
+    >
       <div className="bg-[#DFD7F9] bg-opacity-30 max-w-[1170px] min-h-[410px] rounded-tl-[130px] rounded-2xl flex flex-col items-center relative">
         <h3 className="px-[100px] font-poppins font-semibold text-primary text-opacity-80 text-[33px] max-md:text-[25px] leading-[60px] max-lg:leading-normal text-center py-[70px]">
           Subscribe to get information, latest news and other interesting offers
