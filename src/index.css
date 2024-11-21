@@ -12,6 +12,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 body {
   background-color: #f9f9f9;
 }
@@ -24,9 +25,6 @@ body {
 }
 
 @layer utilities {
-  .padding {
-    @apply;
-  }
   .white-triangle {
     @apply w-0 h-0 border-l-[12px] border-t-[6px] border-b-[6px] border-l-white border-t-transparent border-b-transparent;
   }
