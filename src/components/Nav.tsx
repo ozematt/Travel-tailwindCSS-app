@@ -1,5 +1,6 @@
 import { useState } from "react";
-import logo from "../assets/Logo_dark.png";
+import logoDark from "../assets/Logo_dark.png";
+import logoLight from "../assets/Logo_light.png";
 import hamburger from "../assets/hamburger.png";
 import close from "../assets/close.png";
 import { navLinks } from "../constants";
@@ -19,9 +20,15 @@ const Nav = () => {
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
       <nav className="flex justify-between items-center relative">
         <a href="/">
-          <img src={logo} alt="logo" width={116} height={35} className="" />
+          <img
+            src={theme === "light" ? logoDark : logoLight}
+            alt="logo"
+            width={116}
+            height={35}
+            className=""
+          />
         </a>
-        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color max-xl:hidden">
+        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color dark:text-gray-200 max-xl:hidden">
           {navLinks.map((link) => (
             <li
               key={link.label}
