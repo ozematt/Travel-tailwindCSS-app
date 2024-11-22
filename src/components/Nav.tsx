@@ -11,11 +11,6 @@ const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [theme, setTheme] = useState(getStoredTheme());
 
-  const handleThemeToggle = (toggledTheme: string) => {
-    setTheme(toggledTheme);
-    saveTheme(toggledTheme);
-  };
-
   return (
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
       <nav className="flex justify-between items-center relative">
