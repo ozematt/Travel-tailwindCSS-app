@@ -17,7 +17,7 @@ const Nav = () => {
           {navLinks.map((link) => (
             <li
               key={link.label}
-              className="rounded-md px-5 py-3 hover:shadow-customMorph"
+              className="rounded-md px-5 py-3 hover:ring-1 ring-gray-400"
             >
               <a href={link.href}>{link.label}</a>
             </li>
