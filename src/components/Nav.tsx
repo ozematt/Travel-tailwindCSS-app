@@ -1,11 +1,23 @@
 import { useState } from "react";
-import logo from "../assets/Logo.png";
+import logo from "../assets/Logo_dark.png";
 import hamburger from "../assets/hamburger.png";
 import close from "../assets/close.png";
 import { navLinks } from "../constants";
+import themeSwitch from "../assets/theme_switch.png";
+import { getStoredTheme, saveTheme } from "../lib/storage";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [theme, setTheme] = useState(() => getStoredTheme() || "light");
+
+  const local = JSON.parse(localStorage.getItem("theme"));
+
+  console.log(local);
+
+  const handleThemeToggle = (toggledTheme: string) => {
+    setTheme(toggledTheme);
+    saveTheme(toggledTheme);
+  };
 
   return (
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
@@ -43,6 +55,18 @@ const Nav = () => {
             </ul>
           </div>
         )}
+        <div>
+          <img
+            src={themeSwitch}
+            alt="theme switch"
+            width={40}
+            height={40}
+            className="drop-shadow-xl hover:scale-110 active:scale-100"
+            onClick={() =>
+              handleThemeToggle(theme === "light" ? "dark" : "light")
+            }
+          />
+        </div>
       </nav>
     </header>
   );
