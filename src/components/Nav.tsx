@@ -8,11 +8,7 @@ import { getStoredTheme, saveTheme } from "../lib/storage";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const [theme, setTheme] = useState(() => getStoredTheme() || "light");
-
-  const local = JSON.parse(localStorage.getItem("theme"));
-
-  console.log(local);
+  const [theme, setTheme] = useState(getStoredTheme());
 
   const handleThemeToggle = (toggledTheme: string) => {
     setTheme(toggledTheme);
@@ -35,6 +31,18 @@ const Nav = () => {
             </li>
           ))}
         </ul>
+
+        <img
+          src={themeSwitch}
+          alt="theme switch"
+          width={40}
+          height={40}
+          className="drop-shadow-xl hover:scale-110 active:scale-100 max-xl:absolute right-[60px] top-[-12]"
+          onClick={() =>
+            handleThemeToggle(theme === "light" ? "dark" : "light")
+          }
+        />
+
         <div className="hidden max-xl:block">
           <img
             src={openMenu ? close : hamburger}
@@ -44,29 +52,18 @@ const Nav = () => {
             onClick={() => setOpenMenu(!openMenu)}
           />
         </div>
+
         {openMenu && (
           <div className="absolute top-10 right-0 mt-3 bg-white py-4 pr-5 z-20 rounded-xl">
             <ul className="space-y-4 w-[120px] text-right text-lg">
               {navLinks.map((link) => (
-                <li className="hover:font-semibold">
+                <li key={link.label} className="hover:font-semibold">
                   <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>
           </div>
         )}
-        <div>
-          <img
-            src={themeSwitch}
-            alt="theme switch"
-            width={40}
-            height={40}
-            className="drop-shadow-xl hover:scale-110 active:scale-100"
-            onClick={() =>
-              handleThemeToggle(theme === "light" ? "dark" : "light")
-            }
-          />
-        </div>
       </nav>
     </header>
   );
