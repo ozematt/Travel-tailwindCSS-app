@@ -134,3 +134,18 @@ export const footerData = [
     items: ["Airlinefees", "Airline", "Low fare tips"],
   },
 ] as const;
+
+export const socialIcon = [
+  {
+    title: "facebook",
+    icon: social1,
+  },
+  {
+    title: "instagram",
+    icon: social2,
+  },
+  {
+    title: "twitter",
+    icon: social3,
+  },
+] as const;
