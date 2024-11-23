@@ -5,7 +5,7 @@ import hamburger from "../assets/hamburger.png";
 import close from "../assets/close.png";
 import { navLinks } from "../constants";
 import themeSwitch from "../assets/theme_switch.png";
-import { getStoredTheme, saveTheme } from "../lib/storage";
+import { getStoredTheme, saveTheme } from "../lib/themeUtils";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
