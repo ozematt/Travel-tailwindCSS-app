@@ -1,24 +1,27 @@
-export function getStoredTheme(): string {
+export const getStoredTheme = (): string => {
   try {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
+      //return saved theme if exist
       return JSON.parse(savedTheme);
     }
-    //check user preferences
+
+    //if theme do not exist on local storage, check user settings and return prefer theme
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
     return prefersDark ? "dark" : "light";
   } catch (error) {
+    //
     console.warn(
-      "Błąd odczytu motywu z localStorage. Zwracam domyślny motyw.",
+      "Error reading theme from localStorage. Returning default theme.",
       error
     );
     return "light";
   }
-}
+};
 
-export function saveTheme(theme: string): void {
+export const saveTheme = (theme: string): void => {
   try {
     localStorage.setItem("theme", JSON.stringify(theme));
 
@@ -29,6 +32,6 @@ export function saveTheme(theme: string): void {
       root.classList.remove("dark");
     }
   } catch (error) {
-    console.error("Nie udało się zapisać motywu do localStorage.", error);
+    console.error("Failed to save theme to localStorage.", error);
   }
-}
+};
