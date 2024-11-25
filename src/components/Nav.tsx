@@ -30,7 +30,7 @@ const Nav = () => {
             className=""
           />
         </a>
-        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color  max-xl:hidden dark:text-white">
+        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color max-[1295px]:hidden dark:text-white">
           {navLinks.map((link) => (
             <li
               key={link.label}
@@ -46,13 +46,13 @@ const Nav = () => {
           alt="theme switch"
           width={40}
           height={40}
-          className="drop-shadow-xl hover:scale-110 active:scale-100 max-xl:absolute right-[60px] top-[-12]"
+          className="drop-shadow-xl hover:scale-110 active:scale-100 max-[1295px]:absolute right-[60px] top-[-12]"
           onClick={() =>
             handleThemeToggle(theme === "light" ? "dark" : "light")
           }
         />
 
-        <div className="hidden  max-xl:block">
+        <div className="hidden  max-[1295px]:block">
           <img
             src={openMenu ? close : hamburger}
             alt="hamburger"
