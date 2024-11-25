@@ -30,7 +30,7 @@ export const navLinks = [
   { href: "#destination", label: "Destination" },
   { href: "#contact-us", label: "Contact Us" },
   { href: "/login", label: "Login" },
-  { href: "#signUp", label: "Sign up" },
+  { href: "/signUp", label: "Sign up" },
 ] as const;
 
 export const category = [
