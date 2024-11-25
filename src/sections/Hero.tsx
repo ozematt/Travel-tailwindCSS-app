@@ -1,4 +1,4 @@
-import heroIMG from "../assets/Traveller 1.png";
+import heroIMG from "../assets/HeroIMG.png";
 import bgDecoration from "../assets/Decore.png";
 
 const Hero = () => {
@@ -39,12 +39,12 @@ const Hero = () => {
         alt="background decoration"
         className="absolute z-[-1] top-[-200px] right-0"
       />
-      <div className="absolute top-[-90px] right-[190px]">
+      <div className="absolute top-[-150px] right-[80px]">
         <img
           src={heroIMG}
           alt="traveler"
-          width={630}
-          height={630}
+          width={750}
+          height={750}
           className="z-1 hidden xl:block"
         />
       </div>
