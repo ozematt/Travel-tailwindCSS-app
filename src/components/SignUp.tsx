@@ -14,7 +14,7 @@ const UserSchema = z
   })
   .refine((data) => data.userPassword === data.userPasswordRepeat, {
     message: "Password must match",
-    path: ["passwordRepeat"],
+    path: ["userPasswordRepeat"],
   });
 
 const UsersArraySchema = z.array(UserSchema);
@@ -61,7 +61,6 @@ const SignUp = () => {
       userPasswordRepeat,
     });
     if (!result.success) {
-      console.log(result.error.issues);
       //assign errors to object
       const formattedErrors = result.error.errors.reduce((acc, error) => {
         if (error.path[0]) {
@@ -131,6 +130,11 @@ const SignUp = () => {
             onChange={(e) => setUserEmail(e.target.value)}
             className=" bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
+          {errors?.userEmail && (
+            <p className="text-red-500 leading-[5px] pl-3">
+              {errors.userEmail}
+            </p>
+          )}
           <input
             type="password"
             placeholder="Your password"
@@ -138,6 +142,11 @@ const SignUp = () => {
             onChange={(e) => setUserPassword(e.target.value)}
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
+          {errors?.userPassword && (
+            <p className="text-red-500 leading-[5px] pl-3">
+              {errors.userPassword}
+            </p>
+          )}
           <input
             type="passwordRepeat"
             placeholder="Repeat password"
@@ -145,6 +154,11 @@ const SignUp = () => {
             onChange={(e) => setUserPasswordRepeat(e.target.value)}
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
+          {errors?.userPasswordRepeat && (
+            <p className="text-red-500 leading-[5px] pl-3">
+              {errors.userPasswordRepeat}
+            </p>
+          )}
 
           <Button type={"submit"}>Sign Up</Button>
         </form>
