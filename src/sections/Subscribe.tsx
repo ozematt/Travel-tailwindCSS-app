@@ -1,5 +1,6 @@
 import decoration from "../assets/Decore3.png";
 import violetIcon from "../assets/violet_Icon.png";
+import Button from "../components/Button";
 
 const Subscribe = () => {
   return (
@@ -19,9 +20,7 @@ const Subscribe = () => {
             placeholder="Your email"
             className=" z-2 bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem] mx-[30px] w-full max-w-[400px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          <button className="max-lg:mx-[30px]  px-[50px] py-[22px]  rounded-xl hover:shadow-customMorph dark:hover:shadow-none dark:hover:scale-105 bg-gradient-to-b from-[#FF946D] to-[#FF7D68] text-white font-openSans text-lg">
-            Subscribe
-          </button>
+          <Button>Subscribe</Button>
         </div>
         <img
           src={decoration}

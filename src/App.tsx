@@ -1,26 +1,18 @@
-import BookTrip from "./sections/BookTrip";
-import Comments from "./sections/Comments";
-import Companies from "./sections/Companies";
-import Footer from "./sections/Footer";
-import Hero from "./sections/Hero";
-import Nav from "./components/Nav";
-import Services from "./sections/Services";
-import Subscribe from "./sections/Subscribe";
-import TopDestination from "./sections/TopDestination";
+import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
+import Main from "./components/Main";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <main className="max-container relative">
-      <Nav />
-      <Hero />
-      <Services />
-      <TopDestination />
-      <BookTrip />
-      <Comments />
-      <Companies />
-      <Subscribe />
-      <Footer />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Dashboard />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
