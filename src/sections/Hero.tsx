@@ -1,5 +1,6 @@
 import heroIMG from "../assets/HeroIMG.png";
 import bgDecoration from "../assets/Decore.png";
+import bgDecorationDark from "../assets/Decore_dark.png";
 
 const Hero = () => {
   return (
@@ -37,7 +38,12 @@ const Hero = () => {
       <img
         src={bgDecoration}
         alt="background decoration"
-        className="absolute z-[-1] top-[-200px] right-0"
+        className="absolute z-[-1] top-[-200px] right-0 dark:hidden"
+      />
+      <img
+        src={bgDecorationDark}
+        alt="background decoration"
+        className="absolute z-[-1] top-[-200px] right-0 hidden dark:block"
       />
       <div className="absolute top-[-150px] right-[80px]">
         <img

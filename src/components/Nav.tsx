@@ -3,6 +3,8 @@ import logoDark from "../assets/Logo_dark.png";
 import logoLight from "../assets/Logo_light.png";
 import hamburger from "../assets/hamburger.png";
 import close from "../assets/close.png";
+import hamburgerDark from "../assets/hamburger_dark.png";
+import closeDark from "../assets/close_dark.png";
 import { navLinks } from "../constants";
 import themeSwitch from "../assets/theme_switch.png";
 import { getStoredTheme, saveTheme } from "../lib/themeUtils";
@@ -18,7 +20,7 @@ const Nav = () => {
 
   return (
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
-      <nav className="flex justify-between items-center relative">
+      <nav className="flex justify-between items-center relative z-10">
         <a href="/">
           <img
             src={theme === "light" ? logoDark : logoLight}
@@ -28,11 +30,11 @@ const Nav = () => {
             className=""
           />
         </a>
-        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color dark:text-gray-200 max-xl:hidden">
+        <ul className="flex gap-12 font-openSans font-medium text-lg text-text-color  max-xl:hidden dark:text-white">
           {navLinks.map((link) => (
             <li
               key={link.label}
-              className="rounded-md px-5 py-3 hover:ring-1 ring-gray-400"
+              className="rounded-md px-5 py-3 hover:ring-1 ring-gray-400 dark:hover:ring-white"
             >
               <a href={link.href}>{link.label}</a>
             </li>
@@ -50,13 +52,22 @@ const Nav = () => {
           }
         />
 
-        <div className="hidden max-xl:block">
+        <div className="hidden  max-xl:block">
           <img
             src={openMenu ? close : hamburger}
             alt="hamburger"
             width={25}
             height={25}
             onClick={() => setOpenMenu(!openMenu)}
+            className="dark:hidden"
+          />
+          <img
+            src={openMenu ? closeDark : hamburgerDark}
+            alt="hamburger"
+            width={25}
+            height={25}
+            onClick={() => setOpenMenu(!openMenu)}
+            className="hidden dark:block"
           />
         </div>
 
