@@ -7,23 +7,23 @@ const Footer = () => {
     <footer className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full relative h-[200px]">
       <div className="pb-[100px] flex max-xl:flex-col">
         <div className="max-w-[250px] mr-[100px]">
-          <h4 className="font-poppins font-medium text-primary text-[44px]">
+          <h4 className="font-poppins font-medium text-primary dark:text-stone-200 text-[44px]">
             Jadoo.
           </h4>
-          <p className="font-poppins font-medium text-text-color text-[13px]">
+          <p className="font-poppins font-medium text-text-color  dark:text-stone-400  text-[13px]">
             Book your trip in minute, get full Control for much longer.
           </p>
         </div>
         <div className="flex gap-6 max-[523px]:flex-col">
           {footerData.map((section) => (
             <div key={section.title}>
-              <h5 className="font-poppins font-bold text-primary text-[21px] pt-[20px] pr-10 max-xl:mt-[50px]  pb-6">
+              <h5 className="font-poppins font-bold text-primary dark:text-stone-200 text-[21px] pt-[20px] pr-10 max-xl:mt-[50px]  pb-6">
                 {section.title}
               </h5>
               {section.items.map((item) => (
                 <p
                   key={item}
-                  className="font-poppins font-medium text-text-color text-[18px] py-1 hover:text-opacity-40 cursor-pointer"
+                  className="font-poppins font-medium text-text-color  dark:text-stone-400  text-[18px] py-1 hover:text-opacity-40 cursor-pointer"
                 >
                   {item}
                 </p>
@@ -44,7 +44,7 @@ const Footer = () => {
               />
             ))}
           </div>
-          <p className="font-poppins font-medium text-text-color text-[20px] my-[20px]">
+          <p className="font-poppins font-medium text-text-color dark:text-stone-400 text-[20px] my-[20px]">
             Discover our app
           </p>
           <div className="flex gap-2">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="font-poppins font-medium text-text-color text-[14px] text-center pb-[50px]">
+      <p className="font-poppins font-medium text-text-color text-[14px]  dark:text-stone-400  text-center pb-[50px]">
         All right reserved@jadoo.co
       </p>
     </footer>
