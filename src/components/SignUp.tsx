@@ -1,38 +1,65 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { z } from "zod";
 
-const usersSchema = z.array(
-  z.object({
-    id: z.string(),
-    user: z.string(),
-    password: z.string(),
-  })
-);
-type Users = z.infer<typeof usersSchema>;
+const UserSchema = z.object({
+  id: z.string(),
+  user: z.string().email(),
+  password: z.string().min(6),
+});
+
+const UsersArraySchema = z.array(UserSchema);
+
+type User = z.infer<typeof UserSchema>;
+
+type UsersArray = z.infer<typeof UsersArraySchema>;
 
 const SignUp = () => {
-  const id = useId();
+  //
+  ////DATA
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [users, setUsers] = useState<UsersArray>([]);
 
-  const users = JSON.parse(localStorage.getItem("users") || "[]");
+  const id = useId();
 
-  const validatedUsers = usersSchema.safeParse(users);
-  if (!validatedUsers.success) {
-    localStorage.removeItem("users");
-    return;
-  }
-  console.log(validatedUsers.data.map((user) => user.user));
+  useEffect(() => {
+    const rawUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
+    const parsedUsers = UsersArraySchema.safeParse(rawUsers);
+    if (parsedUsers.success) {
+      setUsers(parsedUsers.data);
+    } else {
+      console.error("Invalid users data in localStorage", parsedUsers.error);
+      setUsers([]);
+    }
+  }, []);
+
+  //Submit sign in form
   const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //checking if user already exist
+    const checkUserId = users.some((user) => user.user === userEmail);
+    if (checkUserId) {
+      //set error and stop if exist
+      setError("User already exist");
+      return;
+    }
 
-    const users = { id: id, user: userEmail, password: userPassword };
-    console.log(users);
+    // make uniq user
+    const newUser: User = { id: id, user: userEmail, password: userPassword };
+    //updated state with all users
+    const updatedUsers = [...users, newUser];
+    setUsers(updatedUsers);
 
-    // localStorage.setItem("users", JSON.stringify(users));
+    //set updated array with users included new user
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    //clear form
+    setUserEmail("");
+    setUserPassword("");
   };
 
   return (

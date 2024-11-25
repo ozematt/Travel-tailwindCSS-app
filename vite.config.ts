@@ -17,4 +17,7 @@ export default defineConfig({
     include: ["src/**/*.{spec,test}.{ts,tsx}"],
     setupFiles: ["/setupTests.mjs"],
   },
+  optimizeDeps: {
+    include: ["zod"],
+  },
 });
