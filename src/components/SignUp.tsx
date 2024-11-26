@@ -3,6 +3,9 @@ import decoration from "../assets/Decore3.png";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import supabase, { addUser } from "../services/supabase";
+
+import { useEffect } from "react";
 
 const SignUpSchema = z
   .object({
@@ -28,7 +31,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     getValues,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(SignUpSchema),
@@ -36,8 +39,21 @@ const SignUp = () => {
 
   console.log(getValues());
 
-  const onSubmit = (data: SignUpSchema) => {
-    reset();
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await supabase.from("users").select();
+      if (error) {
+        console.log(error);
+        return;
+      } else {
+        console.log(data);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const onSubmit = ({ email, password }: SignUpSchema) => {
+    addUser(email, password);
   };
 
   return (
