@@ -16,9 +16,10 @@ type EmailSchema = z.infer<typeof EmailSchema>;
 const Login = () => {
   //
   ////DATA
+  //context
   const { users } = useUserContext();
-  console.log(users);
 
+  //react hook form
   const {
     register,
     getValues,
@@ -29,19 +30,26 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  ////LOGIC
+  //login handler
   const handleLogin = () => {
+    //get entered value
     const { email } = getValues();
+    //check if user exist
     const userExist = users?.some((user) => user === email);
-
+    //if user does not exist set error
     if (!userExist) {
       setError("email", { type: "custom", message: "User does not exist" });
       return;
     }
-    clearErrors(["email"]);
-    localStorage.setItem("user", JSON.stringify(email));
-    alert("Hello again!");
-    navigate("/");
+    //if user exist
+    clearErrors(["email"]); //clear error
+    localStorage.setItem("user", JSON.stringify(email)); //add user to localStorage
+    alert("Hello again!"); //show alert
+    navigate("/"); //navigate to home page
   };
+
+  ////UI
   return (
     <section className="px-[34px] sm:px-[120px] mt-[80px] w-full">
       <div className="flex flex-col justify-center shadow-customMorph items-start max-w-[800px] min-h-[450px] rounded-xl  max-sm:p-[40px] p-[80px] mx-auto gap-10 relative dark:bg-gray-900 dark:shadow-none">
