@@ -1,6 +1,6 @@
 type ButtonProps = {
   children: string;
-  onClick?: void;
+  onClick?: () => void;
   type?: "submit" | "reset" | "button" | undefined;
 };
 

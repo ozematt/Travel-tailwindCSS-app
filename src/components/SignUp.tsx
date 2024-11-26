@@ -38,11 +38,9 @@ const SignUp = () => {
   } = useForm<SignUpSchema>({
     resolver: zodResolver(SignUpSchema),
   });
-
+  const navigate = useNavigate();
   //context api
   const { users, setUsers } = useUserContext();
-
-  const navigate = useNavigate();
 
   //fetch users emails from database
   useEffect(() => {
@@ -62,7 +60,7 @@ const SignUp = () => {
   //handle form submit
   const onSubmit = ({ email, password }: SignUpSchema) => {
     //checking if user exist
-    const userExist = users.some((user) => user === email);
+    const userExist = users?.some((user) => user === email);
     //add error and stop if user already exist
     if (userExist) {
       setError("email", { type: "custom", message: "User already exist" });

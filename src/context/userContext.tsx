@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import supabase from "../services/supabase";
 // import { UserContextProvider } from './userContext';
 
 type UserContextProviderProps = {
@@ -6,14 +7,32 @@ type UserContextProviderProps = {
 };
 
 type UserContext = {
-  users: string[];
-  setUsers: React.Dispatch<React.SetStateAction<string[]>>;
+  users: string[] | null;
+  setUsers: React.Dispatch<React.SetStateAction<string[] | null>>;
 };
 
 const UserContext = createContext<UserContext | null>(null);
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
-  const [users, setUsers] = useState<string[]>([]);
+  const [users, setUsers] = useState<string[] | null>(null);
+
+  //fetch users emails from database
+  useEffect(() => {
+    if (!users) {
+      const fetchData = async () => {
+        const { data, error } = await supabase.from("users").select();
+        if (error) {
+          console.log(error);
+          return;
+        } else {
+          const modifiedData = data.map(({ user }) => user);
+          setUsers(modifiedData); //added users emails to context api
+        }
+      };
+      fetchData();
+    }
+    return;
+  }, []);
 
   return (
     <UserContext.Provider value={{ users, setUsers }}>

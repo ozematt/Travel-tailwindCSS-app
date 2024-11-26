@@ -1,8 +1,47 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
+import { useUserContext } from "../context/userContext";
+
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const EmailSchema = z.object({
+  email: z.string().email({ message: "Invalid email" }),
+});
+
+type EmailSchema = z.infer<typeof EmailSchema>;
 
 const Login = () => {
-  const handleLogin = () => {};
+  //
+  ////DATA
+  const { users } = useUserContext();
+  console.log(users);
+
+  const {
+    register,
+    getValues,
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useForm<EmailSchema>({ resolver: zodResolver(EmailSchema) });
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    const { email } = getValues();
+    const userExist = users?.some((user) => user === email);
+
+    if (!userExist) {
+      setError("email", { type: "custom", message: "User does not exist" });
+      return;
+    }
+    clearErrors(["email"]);
+    localStorage.setItem("user", JSON.stringify(email));
+    alert("Hello again!");
+    navigate("/");
+  };
   return (
     <section className="px-[34px] sm:px-[120px] mt-[80px] w-full">
       <div className="flex flex-col justify-center shadow-customMorph items-start max-w-[800px] min-h-[450px] rounded-xl  max-sm:p-[40px] p-[80px] mx-auto gap-10 relative dark:bg-gray-900 dark:shadow-none">
@@ -20,18 +59,21 @@ const Login = () => {
           alt="decoration"
           className="absolute -rotate-90 scale-75  top-[7px] right-[-80px] dark:opacity-50 opacity-20 z-[1]"
         />
-        <form
-          onSubmit={handleLogin}
-          className="flex justify-start max-xl:flex-wrap gap-5 w-full z-10"
-        >
+        <div className="flex justify-start max-xl:flex-wrap gap-5 w-full z-10 ">
           <input
+            {...register("email")}
             type="email"
             placeholder="Your email"
             className=" bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
 
-          <Button type={"submit"}>Login</Button>
-        </form>
+          <Button onClick={handleLogin}>Login</Button>
+        </div>
+        {errors.email && (
+          <p className="text-red-500 text-[14px] pl-1  leading-[5px]">
+            {errors.email.message}
+          </p>
+        )}
       </div>
     </section>
   );
