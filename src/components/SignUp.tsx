@@ -61,7 +61,7 @@ const SignUp = () => {
       userPasswordRepeat,
     });
     if (!result.success) {
-      //assign errors to object
+      //assign errors values to object {key:value}
       const formattedErrors = result.error.errors.reduce((acc, error) => {
         if (error.path[0]) {
           acc[error.path[0]] = error.message;
@@ -148,7 +148,7 @@ const SignUp = () => {
             </p>
           )}
           <input
-            type="passwordRepeat"
+            type="password"
             placeholder="Repeat password"
             value={userPasswordRepeat}
             onChange={(e) => setUserPasswordRepeat(e.target.value)}
