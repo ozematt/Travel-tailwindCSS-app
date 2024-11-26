@@ -4,7 +4,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import supabase, { addUser } from "../services/supabase";
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/userContext";
@@ -40,11 +39,12 @@ const SignUp = () => {
     resolver: zodResolver(SignUpSchema),
   });
 
+  //context api
   const { users, setUsers } = useUserContext();
 
-  // const [users, setUsers] = useState<string[]>([]);
   const navigate = useNavigate();
 
+  //fetch users emails from database
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase.from("users").select();
@@ -53,26 +53,31 @@ const SignUp = () => {
         return;
       } else {
         const modifiedData = data.map(({ user }) => user);
-        setUsers(modifiedData);
+        setUsers(modifiedData); //added users emails to context api
       }
     };
     fetchData();
   }, []);
 
+  //handle form submit
   const onSubmit = ({ email, password }: SignUpSchema) => {
+    //checking if user exist
     const userExist = users.some((user) => user === email);
+    //add error and stop if user already exist
     if (userExist) {
       setError("email", { type: "custom", message: "User already exist" });
       return;
     }
-    clearErrors(["email"]);
-    addUser(email, password);
-    alert("User add and login successfully!");
-    navigate("/");
-    localStorage.setItem("user", JSON.stringify(email));
-    reset();
+    //if user does not exist
+    clearErrors(["email"]); //clear added error
+    addUser(email, password); // save user in database
+    alert("User add and login successfully!"); //show alert of success
+    navigate("/"); //navigate to home page
+    localStorage.setItem("user", JSON.stringify(email)); //add user to local storage, so user email can be seen
+    reset(); //reset form fields
   };
 
+  ////UI
   return (
     <section className="px-[34px] sm:px-[120px] mt-[80px] w-full">
       <div className="flex flex-col justify-center shadow-customMorph items-start max-w-[800px] min-h-[450px] rounded-xl  max-sm:p-[40px] p-[80px] mx-auto gap-10 relative dark:bg-gray-900 dark:shadow-none">
