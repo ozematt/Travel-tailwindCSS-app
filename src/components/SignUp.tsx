@@ -1,10 +1,8 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import supabase, { addUser } from "../services/supabase";
-import { useEffect } from "react";
+import { addUser } from "../services/supabase";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/userContext";
 import { SignUpSchema } from "../lib/types";
@@ -24,22 +22,7 @@ const SignUp = () => {
   });
   const navigate = useNavigate();
   //context api
-  const { users, setUsers } = useUserContext();
-
-  //fetch users emails from database
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase.from("users").select();
-      if (error) {
-        console.log(error);
-        return;
-      } else {
-        const modifiedData = data.map(({ user }) => user);
-        setUsers(modifiedData); //added users emails to context api
-      }
-    };
-    fetchData();
-  }, []);
+  const { users } = useUserContext();
 
   //handle form submit
   const onSubmit = ({ email, password }: SignUpSchema) => {

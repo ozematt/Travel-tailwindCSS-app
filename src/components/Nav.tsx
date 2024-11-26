@@ -15,13 +15,21 @@ const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [theme, setTheme] = useState(getStoredTheme());
   const [log, setLog] = useState<string | null>(null);
-  console.log(log);
 
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
       const parsedUser = JSON.parse(user);
       setLog(parsedUser);
+    }
+  }, []);
+
+  useEffect(() => {
+    const localStorageTheme = JSON.parse(
+      localStorage.getItem("theme") || "light"
+    );
+    if (localStorageTheme === "dark") {
+      saveTheme("dark");
     }
   }, []);
 

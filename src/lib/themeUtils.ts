@@ -5,7 +5,6 @@ export const getStoredTheme = (): string => {
       //return saved theme if exist
       return JSON.parse(savedTheme);
     }
-
     //if theme do not exist on local storage, check user settings and return prefer theme
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -24,7 +23,6 @@ export const getStoredTheme = (): string => {
 export const saveTheme = (theme: string): void => {
   try {
     localStorage.setItem("theme", JSON.stringify(theme));
-
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
