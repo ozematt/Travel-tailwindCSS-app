@@ -1,6 +1,5 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
-import { useEffect, useId, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -10,8 +9,10 @@ const SignUpSchema = z
     email: z.string().email({ message: "Invalid email" }),
     password: z
       .string()
-      .min(6, { message: "Must be at last 6 characters long " }),
-    confirmPassword: z.string().min(6).optional(),
+      .min(6, { message: "Must be at last 6 characters long" }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: "Must be at last 6 characters long" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords must match",
@@ -26,13 +27,18 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    getValues,
+    reset,
     formState: { errors },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(SignUpSchema),
   });
 
-  //Submit sign in form
-  const onSubmit = (data: SignUpSchema) => {};
+  console.log(getValues());
+
+  const onSubmit = (data: SignUpSchema) => {
+    reset();
+  };
 
   return (
     <section className="px-[34px] sm:px-[120px] mt-[80px] w-full">
@@ -61,21 +67,33 @@ const SignUp = () => {
             placeholder="Your email"
             className=" bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 text-[14px] pl-1  leading-[5px]">
+              {errors.email.message}
+            </p>
+          )}
           <input
             {...register("password")}
             type="password"
             placeholder="Your password"
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-red-500 text-[14px] pl-1  leading-[5px]">
+              {errors.password.message}
+            </p>
+          )}
           <input
             {...register("confirmPassword")}
             type="password"
             placeholder="Confirm password"
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+          {errors.confirmPassword && (
+            <p className="text-red-500 text-[14px] pl-1  leading-[5px]">
+              {errors.confirmPassword.message}
+            </p>
+          )}
           <Button type={"submit"}>Sign Up</Button>
         </form>
       </div>
