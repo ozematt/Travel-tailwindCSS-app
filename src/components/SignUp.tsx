@@ -5,8 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import supabase, { addUser } from "../services/supabase";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/userContext";
 
 const SignUpSchema = z
   .object({
@@ -39,7 +40,9 @@ const SignUp = () => {
     resolver: zodResolver(SignUpSchema),
   });
 
-  const [users, setUsers] = useState<string[]>([]);
+  const { users, setUsers } = useUserContext();
+
+  // const [users, setUsers] = useState<string[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,7 +107,7 @@ const SignUp = () => {
           )}
           <input
             {...register("password")}
-            type="password"
+            type="new-password"
             placeholder="Your password"
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
@@ -115,7 +118,7 @@ const SignUp = () => {
           )}
           <input
             {...register("confirmPassword")}
-            type="password"
+            type="new-password"
             placeholder="Confirm password"
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />

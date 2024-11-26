@@ -8,12 +8,13 @@ const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
 export default supabase;
 
 export const fetchUsers = async () => {
-  const { data, error } = await supabase.from("Users").select();
+  const { data, error } = await supabase.from("users").select();
   if (error) {
     console.error("There has been problem with fetch Users data", error);
     return;
   }
-  return data;
+  const modifiedData = data.map(({ user }) => user);
+  return modifiedData;
 };
 
 export const addUser = async (email: string, password: string) => {

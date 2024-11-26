@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logoDark from "../assets/Logo_dark.png";
 import logoLight from "../assets/Logo_light.png";
 import hamburger from "../assets/hamburger.png";
@@ -9,12 +9,21 @@ import { navLinks } from "../constants";
 import themeSwitch from "../assets/theme_switch.png";
 import { getStoredTheme, saveTheme } from "../lib/themeUtils";
 import Auth from "./Auth";
+import LogOut from "./LogOut";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [theme, setTheme] = useState(getStoredTheme());
+  const [log, setLog] = useState<string | null>(null);
+  console.log(log);
 
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      setLog(parsedUser);
+    }
+  }, []);
 
   const handleThemeToggle = (toggledTheme: string) => {
     setTheme(toggledTheme);
@@ -42,10 +51,13 @@ const Nav = () => {
               <a href={link.href}>{link.label}</a>
             </li>
           ))}
-          {user ? (
-            <p className=" py-3 opacity-50 text-sm leading-7 pl-10">
-              Hello, {user}!
-            </p>
+          {log ? (
+            <>
+              <LogOut />
+              <p className=" py-3 opacity-50 text-sm leading-7 pl-10">
+                Hello, {log}!
+              </p>
+            </>
           ) : (
             <Auth />
           )}
