@@ -1,8 +1,4 @@
-type ButtonProps = {
-  children: string;
-  onClick?: () => void;
-  type?: "submit" | "reset" | "button" | undefined;
-};
+import { type ButtonProps } from "../lib/types";
 
 const Button = ({ children, onClick, type }: ButtonProps) => {
   return (

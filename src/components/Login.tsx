@@ -1,17 +1,10 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
 import { useUserContext } from "../context/userContext";
-
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-
-const EmailSchema = z.object({
-  email: z.string().email({ message: "Invalid email" }),
-});
-
-type EmailSchema = z.infer<typeof EmailSchema>;
+import { EmailSchema } from "../lib/types";
 
 const Login = () => {
   //

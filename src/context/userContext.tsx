@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import supabase from "../services/supabase";
-// import { UserContextProvider } from './userContext';
 
 type UserContextProviderProps = {
   children: React.ReactNode;

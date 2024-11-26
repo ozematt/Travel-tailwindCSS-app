@@ -1,8 +1,4 @@
-type CategoryCartProps = {
-  imgURL: string;
-  title: string;
-  text: string;
-};
+import { type CategoryCartProps } from "../lib/types";
 
 const CategoryCart = ({ imgURL, title, text }: CategoryCartProps) => {
   return (

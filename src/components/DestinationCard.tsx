@@ -1,12 +1,6 @@
 import navigation from "../assets/navigation.png";
 import navigationDark from "../assets/navigation_dark.png";
-
-type DestinationCardProps = {
-  imgURL: string;
-  place: string;
-  price: string;
-  days: string;
-};
+import { type DestinationCardProps } from "../lib/types";
 
 const DestinationCard = ({
   imgURL,

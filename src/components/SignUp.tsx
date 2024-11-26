@@ -1,29 +1,13 @@
 import Button from "./Button";
 import decoration from "../assets/Decore3.png";
-import { z } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import supabase, { addUser } from "../services/supabase";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/userContext";
-
-const SignUpSchema = z
-  .object({
-    email: z.string().email({ message: "Invalid email" }),
-    password: z
-      .string()
-      .min(6, { message: "Must be at last 6 characters long" }),
-    confirmPassword: z
-      .string()
-      .min(6, { message: "Must be at last 6 characters long" }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords must match",
-    path: ["confirmPassword"],
-  });
-
-type SignUpSchema = z.infer<typeof SignUpSchema>;
+import { SignUpSchema } from "../lib/types";
 
 const SignUp = () => {
   //

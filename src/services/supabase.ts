@@ -7,6 +7,7 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_KEY as string;
 const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
 export default supabase;
 
+//helper functions
 export const fetchUsers = async () => {
   const { data, error } = await supabase.from("users").select();
   if (error) {

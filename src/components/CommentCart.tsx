@@ -1,9 +1,4 @@
-type CommentCartProps = {
-  name: string;
-  from: string;
-  avatar: string;
-  comment: string;
-};
+import { type CommentCartProps } from "../lib/types";
 
 const CommentCart = ({ name, from, avatar, comment }: CommentCartProps) => {
   return (
