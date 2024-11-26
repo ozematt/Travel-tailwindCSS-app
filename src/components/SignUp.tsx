@@ -5,7 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import supabase, { addUser } from "../services/supabase";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUpSchema = z
   .object({
@@ -30,14 +31,16 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    getValues,
-    // reset,
+    reset,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<SignUpSchema>({
     resolver: zodResolver(SignUpSchema),
   });
 
-  console.log(getValues());
+  const [users, setUsers] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,14 +49,25 @@ const SignUp = () => {
         console.log(error);
         return;
       } else {
-        console.log(data);
+        const modifiedData = data.map(({ user }) => user);
+        setUsers(modifiedData);
       }
     };
     fetchData();
   }, []);
 
   const onSubmit = ({ email, password }: SignUpSchema) => {
+    const userExist = users.some((user) => user === email);
+    if (userExist) {
+      setError("email", { type: "custom", message: "User already exist" });
+      return;
+    }
+    clearErrors(["email"]);
     addUser(email, password);
+    alert("User add and login successfully!");
+    navigate("/");
+    localStorage.setItem("user", JSON.stringify(email));
+    reset();
   };
 
   return (

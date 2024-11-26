@@ -8,10 +8,13 @@ import closeDark from "../assets/close_dark.png";
 import { navLinks } from "../constants";
 import themeSwitch from "../assets/theme_switch.png";
 import { getStoredTheme, saveTheme } from "../lib/themeUtils";
+import Auth from "./Auth";
 
 const Nav = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [theme, setTheme] = useState(getStoredTheme());
+
+  const user = JSON.parse(localStorage.getItem("user") || "");
 
   const handleThemeToggle = (toggledTheme: string) => {
     setTheme(toggledTheme);
@@ -39,6 +42,13 @@ const Nav = () => {
               <a href={link.href}>{link.label}</a>
             </li>
           ))}
+          {user ? (
+            <p className=" py-3 opacity-50 text-sm leading-7 pl-10">
+              Hello, {user}!
+            </p>
+          ) : (
+            <Auth />
+          )}
         </ul>
 
         <img
