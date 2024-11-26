@@ -2,105 +2,37 @@ import Button from "./Button";
 import decoration from "../assets/Decore3.png";
 import { useEffect, useId, useState } from "react";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-const UserSchema = z
+const SignUpSchema = z
   .object({
-    id: z.string(),
-    userEmail: z.string().email({ message: "Invalid email" }),
-    userPassword: z
+    email: z.string().email({ message: "Invalid email" }),
+    password: z
       .string()
       .min(6, { message: "Must be at last 6 characters long " }),
-    userPasswordRepeat: z.string().min(6).optional(),
+    confirmPassword: z.string().min(6).optional(),
   })
-  .refine((data) => data.userPassword === data.userPasswordRepeat, {
-    message: "Password must match",
-    path: ["userPasswordRepeat"],
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords must match",
+    path: ["confirmPassword"],
   });
 
-const UsersArraySchema = z.array(UserSchema);
-
-type User = z.infer<typeof UserSchema>;
-
-type UsersArray = z.infer<typeof UsersArraySchema>;
+type SignUpSchema = z.infer<typeof SignUpSchema>;
 
 const SignUp = () => {
   //
   ////DATA
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userPasswordRepeat, setUserPasswordRepeat] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [users, setUsers] = useState<UsersArray>([]);
-
-  console.log(errors);
-
-  const id = useId();
-
-  //fetch data from local storage
-  useEffect(() => {
-    const rawUsers = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const parsedUsers = UsersArraySchema.safeParse(rawUsers);
-    if (parsedUsers.success) {
-      setUsers(parsedUsers.data);
-    } else {
-      console.error("Invalid users data in localStorage", parsedUsers.error);
-      setUsers([]);
-    }
-  }, []);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpSchema>({
+    resolver: zodResolver(SignUpSchema),
+  });
 
   //Submit sign in form
-  const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    //form data validation
-    const result = UserSchema.safeParse({
-      id,
-      userEmail,
-      userPassword,
-      userPasswordRepeat,
-    });
-    if (!result.success) {
-      //assign errors values to object {key:value}
-      const formattedErrors = result.error.errors.reduce((acc, error) => {
-        if (error.path[0]) {
-          acc[error.path[0]] = error.message;
-        }
-        return acc;
-      }, {} as Record<string, string>);
-
-      setErrors(formattedErrors);
-      return;
-    } else {
-      setErrors({});
-    }
-
-    //checking if user already exist
-    const checkUserId = users.some((user) => user.userEmail === userEmail);
-    if (checkUserId) {
-      //set error and stop if exist
-      setErrors({ userEmail: "User already exist" });
-      return;
-    }
-
-    // make uniq user
-    const newUser: User = {
-      id: id,
-      userEmail: userEmail,
-      userPassword: userPassword,
-    };
-    //updated state with all users
-    const updatedUsers = [...users, newUser];
-    setUsers(updatedUsers);
-
-    //set updated array with users included new user
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    //clear form
-    setUserEmail("");
-    setUserPassword("");
-    setUserPasswordRepeat("");
-  };
+  const onSubmit = (data: SignUpSchema) => {};
 
   return (
     <section className="px-[34px] sm:px-[120px] mt-[80px] w-full">
@@ -120,46 +52,30 @@ const SignUp = () => {
           className="absolute -rotate-90 scale-75  top-[7px] right-[-80px] dark:opacity-50 opacity-20 z-[1]"
         />
         <form
-          onSubmit={handleSignUp}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-start justify-start gap-5 w-full z-10"
         >
           <input
+            {...register("email")}
             type="email"
             placeholder="Your email"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
             className=" bg-email-icon bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors?.userEmail && (
-            <p className="text-red-500 leading-[5px] pl-3">
-              {errors.userEmail}
-            </p>
-          )}
+          {errors.email && <p>{errors.email.message}</p>}
           <input
+            {...register("password")}
             type="password"
             placeholder="Your password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors?.userPassword && (
-            <p className="text-red-500 leading-[5px] pl-3">
-              {errors.userPassword}
-            </p>
-          )}
+          {errors.password && <p>{errors.password.message}</p>}
           <input
+            {...register("confirmPassword")}
             type="password"
-            placeholder="Repeat password"
-            value={userPasswordRepeat}
-            onChange={(e) => setUserPasswordRepeat(e.target.value)}
+            placeholder="Confirm password"
             className="bg-no-repeat bg-[center_left_1.5rem] focus:outline-none focus:ring-1 ring-black pl-[3.2rem]  w-full max-w-[500px] h-[70px] rounded-xl placeholder:pl-1"
           />
-          {errors?.userPasswordRepeat && (
-            <p className="text-red-500 leading-[5px] pl-3">
-              {errors.userPasswordRepeat}
-            </p>
-          )}
-
+          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
           <Button type={"submit"}>Sign Up</Button>
         </form>
       </div>
