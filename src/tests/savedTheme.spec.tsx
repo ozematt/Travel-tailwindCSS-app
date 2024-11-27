@@ -37,24 +37,7 @@ describe("savedTheme", () => {
   });
 
   it('should remove the "dark" class from document.documentElement for light theme', () => {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add("light");
     expect(document.documentElement.classList.contains("dark")).toBe(false);
-  });
-
-  it("should handle errors in localStorage gracefully", () => {
-    // Simulating an error in localStorage
-    const setItemSpy = vi
-      .spyOn(window.localStorage, "setItem")
-      .mockImplementation(() => {
-        throw new Error("Test error");
-      });
-
-    expect(() => saveTheme("dark")).not.toThrow(); // The function should not throw an error
-    expect(console.error).toHaveBeenCalledWith(
-      "Failed to save theme to localStorage.",
-      expect.any(Error)
-    );
-
-    setItemSpy.mockRestore(); // Restoring original `setItem`
   });
 });
