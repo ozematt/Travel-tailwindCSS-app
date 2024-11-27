@@ -3,6 +3,8 @@ import violetIcon from "../assets/violet_Icon.png";
 import Button from "../components/Button";
 
 const Subscribe = () => {
+  //
+  ////UI
   return (
     <section
       id="contact-us"

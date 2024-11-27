@@ -3,6 +3,8 @@ import googlePlay from "../assets/Google Play.png";
 import appleStore from "../assets/Apple Store.png";
 
 const Footer = () => {
+  //
+  ////UI
   return (
     <footer className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full relative h-[200px]">
       <div className="pb-[100px] flex max-xl:flex-col">

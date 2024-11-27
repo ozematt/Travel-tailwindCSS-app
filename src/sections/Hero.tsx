@@ -2,6 +2,8 @@ import heroIMG from "../assets/HeroIMG.png";
 import bgDecoration from "../assets/Decore.png";
 
 const Hero = () => {
+  //
+  ////UI
   return (
     <section
       id="home"

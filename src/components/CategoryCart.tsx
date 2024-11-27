@@ -1,6 +1,8 @@
 import { type CategoryCartProps } from "../lib/types";
 
 const CategoryCart = ({ imgURL, title, text }: CategoryCartProps) => {
+  //
+  ////UI
   return (
     <div className="w-[267px] h-[314px] hover:shadow-customMorph dark:hover:shadow-none dark:hover:scale-105 dark:transition dark:ease-in-out dark:delay-150 rounded-[40px] flex flex-col  items-center">
       <div className="mt-9">

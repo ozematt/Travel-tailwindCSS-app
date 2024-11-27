@@ -2,6 +2,8 @@ import CategoryCart from "../components/CategoryCart";
 import { category } from "../constants";
 
 const Services = () => {
+  //
+  ////UI
   return (
     <section
       id="about-us"

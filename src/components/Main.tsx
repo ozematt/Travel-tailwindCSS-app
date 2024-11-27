@@ -9,6 +9,8 @@ import TopDestination from "../sections/TopDestination";
 import Dashboard from "./Dashboard";
 
 const Main = () => {
+  //
+  ////UI
   return (
     <main className="max-container relative">
       <Dashboard />

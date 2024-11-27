@@ -10,6 +10,10 @@ import { SignUpSchema } from "../lib/types";
 const SignUp = () => {
   //
   ////DATA
+  const navigate = useNavigate();
+  const { users } = useUserContext();
+
+  //react hook form
   const {
     register,
     handleSubmit,
@@ -20,23 +24,21 @@ const SignUp = () => {
   } = useForm<SignUpSchema>({
     resolver: zodResolver(SignUpSchema),
   });
-  const navigate = useNavigate();
-  //context api
-  const { users } = useUserContext();
 
+  ////LOGIC
   //handle form submit
   const onSubmit = ({ email, password }: SignUpSchema) => {
     //checking if user exist
     const userExist = users?.some((user) => user === email);
-    //add error and stop if user already exist
+    //add error and stop, if user already exist
     if (userExist) {
       setError("email", { type: "custom", message: "User already exist" });
       return;
     }
     //if user does not exist
-    clearErrors(["email"]); //clear added error
-    addUser(email, password); // save user in database
-    alert("User add and login successfully!"); //show alert of success
+    clearErrors(["email"]); //clear error
+    addUser(email, password); // add user to database
+    alert("User add and login successfully!"); //show alert
     navigate("/"); //navigate to home page
     localStorage.setItem("user", JSON.stringify(email)); //add user to local storage, so user email can be seen
     reset(); //reset form fields

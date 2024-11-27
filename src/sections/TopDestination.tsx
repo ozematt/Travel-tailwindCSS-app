@@ -3,6 +3,8 @@ import decoration from "../assets/Decore2.png";
 import DestinationCard from "../components/DestinationCard";
 
 const TopDestination = () => {
+  //
+  ////UI
   return (
     <section
       id="destination"

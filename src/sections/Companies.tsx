@@ -1,6 +1,8 @@
 import { companies } from "../constants";
 
 const Companies = () => {
+  //
+  ////UI
   return (
     <section className="px-[34px] sm:px-[120px] max-lg:mt-[70px] lg:mt-[200px] w-full relative">
       <div className="flex flex-wrap items-center justify-evenly">

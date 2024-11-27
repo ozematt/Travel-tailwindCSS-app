@@ -8,6 +8,8 @@ const DestinationCard = ({
   price,
   days,
 }: DestinationCardProps) => {
+  //
+  ////UI
   return (
     <div className="shadow-lg rounded-b-2xl transition ease-in-out delay-155 hover:scale-105 max-sm:hover:scale-95 hover:shadow-2xl">
       <div

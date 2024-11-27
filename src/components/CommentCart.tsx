@@ -1,6 +1,8 @@
 import { type CommentCartProps } from "../lib/types";
 
 const CommentCart = ({ name, from, avatar, comment }: CommentCartProps) => {
+  //
+  ////UI
   return (
     <div className="relative transition ease-in-out delay-155 hover:scale-110 max-sm:hover:scale-95 hover:shadow-2xl dark:bg-gray-900">
       <img

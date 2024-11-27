@@ -2,6 +2,8 @@ import { steps } from "../constants";
 import tripCart from "../assets/TripCart.png";
 
 const BookTrip = () => {
+  //
+  ////UI
   return (
     <section className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[200px] w-full relative">
       <div className="max-w-[512px]">

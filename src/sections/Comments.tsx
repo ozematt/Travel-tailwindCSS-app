@@ -2,6 +2,8 @@ import CommentCart from "../components/CommentCart";
 import { testimonials } from "../constants";
 
 const Comments = () => {
+  //
+  ////UI
   return (
     <section className="px-[34px] sm:px-[120px] mt-[100px] sm:mt-[600px] xl:mt-[100px] w-full relative">
       <p className="font-poppins font-semibold text-lg uppercase text-text-color dark:brightness-150">

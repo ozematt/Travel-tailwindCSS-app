@@ -9,7 +9,7 @@ import { EmailSchema } from "../lib/types";
 const Login = () => {
   //
   ////DATA
-  //context
+  const navigate = useNavigate();
   const { users } = useUserContext();
 
   //react hook form
@@ -21,8 +21,6 @@ const Login = () => {
     formState: { errors },
   } = useForm<EmailSchema>({ resolver: zodResolver(EmailSchema) });
 
-  const navigate = useNavigate();
-
   ////LOGIC
   //login handler
   const handleLogin = () => {
@@ -30,7 +28,7 @@ const Login = () => {
     const { email } = getValues();
     //check if user exist
     const userExist = users?.some((user) => user === email);
-    //if user does not exist set error
+    //if user does not exist, set error
     if (!userExist) {
       setError("email", { type: "custom", message: "User does not exist" });
       return;

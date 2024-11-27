@@ -1,6 +1,8 @@
 import { type ButtonProps } from "../lib/types";
 
 const Button = ({ children, onClick, type }: ButtonProps) => {
+  //
+  ////UI
   return (
     <button
       type={type ? type : undefined}
