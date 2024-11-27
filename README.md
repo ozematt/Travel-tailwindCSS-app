@@ -22,12 +22,12 @@ Witam w moim projekcie **Travel**! 🎒✨ Projekt powstał na podstawie darmowe
 ![Widok główny - motyw ciemny](./screenshots/Main_dark.png)
 
 ### Widok główny - Mobilny
-![Widok główny - motyw jasny](./screenshots/Main-mobile_light.png)
-![Widok główny - motyw ciemny](./screenshots/Main-mobile_dark.png)
+![Widok główny - mobilny](./screenshots/Mobile-view_both-Theme.png)
+
 
 ### Formularz rejestracji
-![Formularz rejestracji - motyw jasny](./screenshots/SignUp_light.png)
-![Formularz rejestracji - motyw ciemny](./screenshots/SignUp_dark.png)
+![Formularz rejestracji - motyw jasny](./screenshots/SignUp_bothTheme.png)
+![Formularz rejestracji - motyw ciemny](./screenshots/Login_bothTheme.png)
 
 
 
