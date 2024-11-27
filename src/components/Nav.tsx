@@ -12,32 +12,41 @@ import Auth from "./Auth";
 import LogOut from "./LogOut";
 
 const Nav = () => {
+  //
+  ////DATA
   const [openMenu, setOpenMenu] = useState(false);
   const [theme, setTheme] = useState(getStoredTheme());
-  const [log, setLog] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
+  ////LOGIC
+  //get logged user
   useEffect(() => {
+    //read user email from localStorage
     const user = localStorage.getItem("user");
     if (user) {
       const parsedUser = JSON.parse(user);
-      setLog(parsedUser);
+      setUserEmail(parsedUser);
     }
   }, []);
 
+  //get theme
   useEffect(() => {
+    //read them from local storage
     const localStorageTheme = JSON.parse(
       localStorage.getItem("theme") || "light"
     );
     if (localStorageTheme === "dark") {
-      saveTheme("dark");
+      saveTheme("dark"); //add class "dark" to html
     }
   }, []);
 
+  //action on theme switch button
   const handleThemeToggle = (toggledTheme: string) => {
     setTheme(toggledTheme);
     saveTheme(toggledTheme);
   };
 
+  ////UI
   return (
     <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
       <nav className="flex justify-between items-center relative z-10">
@@ -59,11 +68,11 @@ const Nav = () => {
               <a href={link.href}>{link.label}</a>
             </li>
           ))}
-          {log ? (
+          {userEmail ? (
             <>
               <LogOut />
               <p className=" py-3 opacity-50 text-sm leading-7 pl-10">
-                Hello, {log}!
+                Hello, {userEmail}!
               </p>
             </>
           ) : (
