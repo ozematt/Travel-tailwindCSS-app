@@ -25,7 +25,7 @@ import social2 from "../assets/social2.png";
 import social3 from "../assets/social3.png";
 
 export const navLinks = [
-  { href: "#home", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "#about-us", label: "About Us" },
   { href: "#destination", label: "Destination" },
   { href: "#contact-us", label: "Contact Us" },

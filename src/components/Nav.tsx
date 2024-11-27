@@ -48,7 +48,7 @@ const Nav = () => {
 
   ////UI
   return (
-    <header className="px-[30px] sm:px-[115px] py-[35px] w-full">
+    <header className="px-[30px] sm:px-[115px] py-[35px] w-full max-container">
       <nav className="flex justify-between items-center relative z-10">
         <a href="/">
           <img
