@@ -74,8 +74,8 @@ const Nav = () => {
         <img
           src={themeSwitch}
           alt="theme switch"
-          width={40}
-          height={40}
+          width={50}
+          height={50}
           className="drop-shadow-xl hover:scale-110 active:scale-100 max-[1295px]:absolute right-[60px] top-[-12]"
           onClick={() =>
             handleThemeToggle(theme === "light" ? "dark" : "light")
