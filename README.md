@@ -27,8 +27,6 @@ Witam w moim projekcie **Travel**! 🎒✨ Projekt powstał na podstawie darmowe
 
 ### Formularz rejestracji
 ![Formularz rejestracji - motyw jasny](./screenshots/SignUp-bothTheme.png)
-![Formularz rejestracji - motyw ciemny](./screenshots/Login-bothTheme.png)
-
 
 
 ## Technologie
