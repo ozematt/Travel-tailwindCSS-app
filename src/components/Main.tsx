@@ -1,11 +1,14 @@
-import BookTrip from "../sections/BookTrip";
-import Comments from "../sections/Comments";
-import Companies from "../sections/Companies";
-import Footer from "../sections/Footer";
-import Hero from "../sections/Hero";
-import Services from "../sections/Services";
-import Subscribe from "../sections/Subscribe";
-import TopDestination from "../sections/TopDestination";
+import {
+  BookTrip,
+  Comments,
+  Companies,
+  Footer,
+  Hero,
+  Services,
+  Subscribe,
+  TopDestination,
+} from "../sections";
+
 import Dashboard from "./Dashboard";
 
 const Main = () => {
