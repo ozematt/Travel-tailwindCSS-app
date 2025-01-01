@@ -1,4 +1,4 @@
-import CategoryCart from "../components/CategoryCart";
+import { CategoryCart } from "../components";
 import { category } from "../constants";
 
 const Services = () => {

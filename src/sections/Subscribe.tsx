@@ -1,6 +1,6 @@
 import decoration from "../assets/Decore3.png";
 import violetIcon from "../assets/violet_Icon.png";
-import Button from "../components/Button";
+import { Button } from "../components";
 
 const Subscribe = () => {
   //

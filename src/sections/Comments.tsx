@@ -1,4 +1,4 @@
-import CommentCart from "../components/CommentCart";
+import { CommentCart } from "../components";
 import { testimonials } from "../constants";
 
 const Comments = () => {

@@ -1,6 +1,6 @@
 import { places } from "../constants";
 import decoration from "../assets/Decore2.png";
-import DestinationCard from "../components/DestinationCard";
+import { DestinationCard } from "../components";
 
 const TopDestination = () => {
   //
