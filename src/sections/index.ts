@@ -6,3 +6,14 @@ import Hero from "./Hero";
 import Services from "./Services";
 import Subscribe from "./Subscribe";
 import TopDestination from "./TopDestination";
+
+export {
+  BookTrip,
+  Comments,
+  Companies,
+  Footer,
+  Hero,
+  Services,
+  Subscribe,
+  TopDestination,
+};
