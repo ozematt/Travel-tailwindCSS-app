@@ -9,3 +9,17 @@ import LogOut from "./LogOut";
 import Main from "./Main";
 import Nav from "./Nav";
 import SignUp from "./SignUp";
+
+export {
+  Auth,
+  Button,
+  CategoryCart,
+  CommentCart,
+  Dashboard,
+  DestinationCard,
+  Login,
+  LogOut,
+  Main,
+  Nav,
+  SignUp,
+};
