@@ -1,5 +1,5 @@
 import { places } from "../constants";
-import decoration from "../assets/Decore2.png";
+import { decoration2 } from "../assets";
 import { DestinationCard } from "../components";
 
 const TopDestination = () => {
@@ -21,7 +21,7 @@ const TopDestination = () => {
           <DestinationCard key={place.place} {...place} />
         ))}
         <img
-          src={decoration}
+          src={decoration2}
           alt="decoration"
           className="absolute right-6 bottom-5 z-[-1] max-[1445px]:hidden"
         />

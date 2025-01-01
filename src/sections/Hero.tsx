@@ -1,5 +1,4 @@
-import heroIMG from "../assets/HeroIMG.png";
-import bgDecoration from "../assets/Decore.png";
+import { heroIMG, bgDecoration } from "../assets";
 
 const Hero = () => {
   //

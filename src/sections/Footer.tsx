@@ -1,6 +1,5 @@
 import { footerData, socialIcon } from "../constants";
-import googlePlay from "../assets/Google Play.png";
-import appleStore from "../assets/Apple Store.png";
+import { googlePlay, appleStore } from "../assets";
 
 const Footer = () => {
   //

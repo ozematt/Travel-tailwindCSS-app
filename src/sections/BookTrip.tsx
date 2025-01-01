@@ -1,5 +1,5 @@
 import { steps } from "../constants";
-import tripCart from "../assets/TripCart.png";
+import { tripCart } from "../assets";
 
 const BookTrip = () => {
   //
