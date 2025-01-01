@@ -1,4 +1,4 @@
-import Button from "./Button";
+import { Button } from "./";
 import decoration from "../assets/Decore3.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

@@ -9,7 +9,7 @@ import {
   TopDestination,
 } from "../sections";
 
-import Dashboard from "./Dashboard";
+import { Dashboard } from "./";
 
 const Main = () => {
   //

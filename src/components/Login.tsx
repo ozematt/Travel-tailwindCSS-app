@@ -1,4 +1,4 @@
-import Button from "./Button";
+import { Button } from "./";
 import decoration from "../assets/Decore3.png";
 import { useUserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";

@@ -8,8 +8,7 @@ import closeDark from "../assets/close_dark.png";
 import { navLinks } from "../constants";
 import themeSwitch from "../assets/theme_switch.png";
 import { getStoredTheme, saveTheme } from "../lib/themeUtils";
-import Auth from "./Auth";
-import LogOut from "./LogOut";
+import { Auth, LogOut } from "./";
 
 const Nav = () => {
   //
